@@ -1,22 +1,25 @@
 package com.company;
 
-import com.company.abstractfactorymethod.RussianFactory;
-import com.company.abstractfactorymethod.TransportFactory;
-import com.company.abstractfactorymethod.UsaFactory;
+import com.company.decorator.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        TransportFactory factory;
+        boolean showBorder = false;
 
-        if (true) {
-            factory = new RussianFactory();
+        Component window;
+        Component textView;
+
+        if (!showBorder) {
+            window = new Window();
+            textView = new TextView();
         } else {
-            factory = new UsaFactory();
+            window = new BorderDecorator(new Window());
+            textView = new BorderDecorator(new TextView());
         }
 
-        factory.createAirCraft();
-        factory.createCar();
+        window.draw();
+        textView.draw();
     }
 }
