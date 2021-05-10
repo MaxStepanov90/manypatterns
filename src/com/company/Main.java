@@ -1,23 +1,22 @@
 package com.company;
 
-import com.company.fabricmethod.Car;
-import com.company.fabricmethod.CarSelector;
-import com.company.fabricmethod.RoadType;
+import com.company.abstractfactorymethod.RussianFactory;
+import com.company.abstractfactorymethod.TransportFactory;
+import com.company.abstractfactorymethod.UsaFactory;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Car car = CarSelector.getInstance().getCar(RoadType.CITY);
-        car.drive();
-        car.stop();
+        TransportFactory factory;
 
-        car = CarSelector.getInstance().getCar(RoadType.OFFROAD);
-        car.drive();
-        car.stop();
+        if (true) {
+            factory = new RussianFactory();
+        } else {
+            factory = new UsaFactory();
+        }
 
-        car = CarSelector.getInstance().getCar(RoadType.GAZON);
-        car.drive();
-        car.stop();
+        factory.createAirCraft();
+        factory.createCar();
     }
 }
